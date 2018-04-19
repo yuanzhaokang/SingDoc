@@ -53,7 +53,9 @@ export default class Catalogue extends Component {
             leftIcon={<Book />}
             key={data[i].name}
             title={data[i].name}
-            secondaryText={data[i].name}>
+            secondaryText={data[i].name}
+            onClick={this.handleItemClick.bind(this, data[i].value)}
+         >
          </ListItem>;
          nest.push(item);
       }
@@ -61,6 +63,10 @@ export default class Catalogue extends Component {
       return (
          <ListItem leftIcon={<Folder />} key={new Date().getTime() + "-" + value} title={value} secondaryText={value} nestedItems={nest}></ListItem>
       );
+   }
+
+   handleItemClick(path) {
+      console.log(path);
    }
 
    isFolder(item) {

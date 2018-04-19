@@ -1,4 +1,7 @@
 import {List, ListItem} from 'material-ui/List';
+// import FontIcon from 'material-ui/FontIcon';
+import Folder from 'material-ui/svg-icons/file/folder';
+import Book from 'material-ui/svg-icons/action/book';
 import React, {Component} from 'react';
 import './catalogue.scss';
 
@@ -46,12 +49,17 @@ export default class Catalogue extends Component {
             continue;
          }
 
-         let item = <ListItem key={data[i].name} primaryText={data[i].name}></ListItem>;
+         let item = <ListItem
+            leftIcon={<Book />}
+            key={data[i].name}
+            title={data[i].name}
+            secondaryText={data[i].name}>
+         </ListItem>;
          nest.push(item);
       }
 
       return (
-         <ListItem key={new Date().getTime() + "-" + value} primaryText={value} nestedItems={nest}></ListItem>
+         <ListItem leftIcon={<Folder />} key={new Date().getTime() + "-" + value} title={value} secondaryText={value} nestedItems={nest}></ListItem>
       );
    }
 

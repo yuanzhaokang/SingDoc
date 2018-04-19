@@ -29,7 +29,7 @@ export default class Catalogue extends Component {
          .then(res => {
             res.json()
                .then(data => {
-                  let catalogue = this.renderCatalogue(data);
+                  let catalogue = this.renderCatalogue(data, "Sing Doc");
                   this.setState({
                      catalogue
                   })
@@ -37,21 +37,21 @@ export default class Catalogue extends Component {
          });
    }
 
-   renderCatalogue(data) {
+   renderCatalogue(data, value) {
       let nest = [];
 
       for(let i = 0; i < data.length; i++) {
+         if(this.isFolder(data[i])) {
+            nest.push(this.renderCatalogue(data[i].children, data[i].name));
+            continue;
+         }
+
          let item = <ListItem key={data[i].name} primaryText={data[i].name}></ListItem>;
          nest.push(item);
-
-         if(this.isFolder(data[i])) {
-            console.log(data[i])
-            this.renderCatalogue(data[i].children);
-         }
       }
 
       return (
-         <ListItem nestedItems={nest}></ListItem>
+         <ListItem key={new Date().getTime() + "-" + value} primaryText={value} nestedItems={nest}></ListItem>
       );
    }
 

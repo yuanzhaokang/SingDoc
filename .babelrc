@@ -1,10 +1,23 @@
 {
-  "presets": [
+   "presets": [
       "react",
-      "env", 
+      "env",
       "stage-0"
    ],
    "plugins": [
-      "transform-decorators-legacy"
+      "transform-decorators-legacy",
+      [
+         "import",
+         [
+            {
+               "libraryName": "antd"
+            },
+            {
+               "libraryName": "material-ui",
+               "libraryDirectory": "components",
+               "camel2DashComponentName": false
+            }
+         ]
+      ]
    ]
 }

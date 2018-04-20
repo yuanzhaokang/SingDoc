@@ -1,35 +1,17 @@
 # Sing Doc  
   
-  Sing Doc is a simple e-book with markdown.  
-  * npm install  
-  
-```js
-import Catalogue from 'src/Catalogue';
-import SingBook from 'src/SingBook';
-import React, {Component} from 'react';
-import {Layout} from 'antd';
-import 'antd/dist/antd.css';
-import './sing-doc.scss';
-const {Header, Footer, Sider, Content} = Layout;
+  ---
+  ### Yet another GitBook.  
 
-export default class SingDoc extends Component {
-   constructor() {
-      super(...arguments);
-      console.log("=====")
-   }
+  > git clone [https://github.com/yuanzhaokang/SingDoc.git](https://github.com/yuanzhaokang/SingDoc.git)  
+  > * npm install  
+  > * npm run build  
 
-   render() {
-      return (
-         <Layout style={{height: "100%"}} className='sing-doc'>
-            <Sider breakpoint="md" collapsedWidth="0" className='sider' width={'300'}>
-               <Catalogue />
-            </Sider>
+  Save your markdown file in 'md'. Then run:  
+  > * npm run gen    
 
-            <Content>
-               <SingBook />
-            </Content>
-         </Layout>
-      );
-   }
-}
-```  
+  to generate catalogue.  
+
+  And start a server to open it in your browser.  
+
+  [Live Demo](https://yuanzhaokang.github.io/SingDoc/)

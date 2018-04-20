@@ -13,11 +13,11 @@ class SingBook extends Component {
    }
 
    componentDidMount() {
-      this.getBookContent();
+      this.getBookContent(this.props.path);
    }
 
-   componentDidUpdate() {
-      this.getBookContent();
+   componentWillReceiveProps(nextProps, nextState) {
+      this.getBookContent(nextProps.path);
    }
 
    render() {
@@ -26,8 +26,8 @@ class SingBook extends Component {
       );
    }
 
-   getBookContent() {
-      fetch(this.props.path)
+   getBookContent(path) {
+      fetch(path)
          .then(res => {
             res.text()
                .then(md => {

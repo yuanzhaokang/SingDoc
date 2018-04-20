@@ -9,7 +9,7 @@ module.exports = {
       vendor: ['react', 'react-dom']
    },
    output: {
-      path: __dirname + '/public/dist/',
+      path: __dirname,
       filename: '[name].js',
    },
    module: {

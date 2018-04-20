@@ -56,8 +56,8 @@ class Catalogue extends Component {
          let item = <ListItem
             leftIcon={<Book />}
             key={data[i].name}
-            title={data[i].name}
-            secondaryText={data[i].name}
+            title={data[i].name.trim(".md", "right")}
+            secondaryText={data[i].name.trim(".md", "right")}
             onClick={this.handleItemClick.bind(this, data[i].value)}
          >
          </ListItem>;
@@ -65,7 +65,7 @@ class Catalogue extends Component {
       }
 
       return (
-         <ListItem leftIcon={<Folder />} key={new Date().getTime() + "-" + value} title={value} secondaryText={value} nestedItems={nest}></ListItem>
+         <ListItem leftIcon={<Folder />} key={new Date().getTime() + "-" + value} title={value.trim(".md", "right")} secondaryText={value.trim(".md", "right")} nestedItems={nest}></ListItem>
       );
    }
 

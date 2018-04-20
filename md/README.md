@@ -7,7 +7,7 @@
   > * npm install  
   > * npm run build  
 
-  Save your markdown file in 'md'. Then run:  
+  Save your markdown file in 'md' and images in 'md/images'. Then run:  
   > * npm run gen    
 
   to generate catalogue.  

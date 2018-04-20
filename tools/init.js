@@ -12,7 +12,7 @@ function readFile(path, filesList, targetObj) {
    files.forEach(walk);
    function walk(file) {
       states = fs.statSync(path + '/' + file);
-      if(states.isDirectory()) {
+      if(states.isDirectory() && file != 'images') {
          let item;
          if(targetObj["children"]) {
             item = {name: file, children: []};
@@ -31,13 +31,15 @@ function readFile(path, filesList, targetObj) {
          obj.name = file;
          obj.path = path + '/' + file;
 
-         if(targetObj["children"]) {
-            let item = {name: file, value: obj.path}
-            targetObj["children"].push(item);
-         }
-         else {
-            let item = {name: file, value: obj.path};
-            filesList.push(item);
+         if(file.endsWith(".md")) {
+            if(targetObj["children"]) {
+               let item = {name: file, value: obj.path}
+               targetObj["children"].push(item);
+            }
+            else {
+               let item = {name: file, value: obj.path};
+               filesList.push(item);
+            }
          }
       }
    }

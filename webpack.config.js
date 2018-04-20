@@ -6,7 +6,7 @@ module.exports = {
    devtool: false,
    entry: {
       bundle: './src/app/render.js',
-      vendor: ['react', 'react-dom']
+      // vendor: ['react', 'react-dom', 'core-decorators', 'markdown-it', 'react-redux', 'redux']
    },
    output: {
       path: __dirname,
@@ -58,5 +58,16 @@ module.exports = {
          "node_modules",
          path.resolve(__dirname, "./")
       ]
+   },
+   optimization: {
+      splitChunks: {
+         cacheGroups: {
+            commons: {
+               chunks: "initial",
+               test: /react|lodash|react-dom|redux|react-redux|markdown-it|core-decorators/,
+               name: "vendor", 
+            }
+         }
+      }
    }
 }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import MarkdownIt from 'markdown-it';
+import Paper from 'material-ui/Paper';
 import {connect} from 'react-redux';
 import './singbook.scss';
 
@@ -22,7 +23,9 @@ class SingBook extends Component {
 
    render() {
       return (
-         <div className='sing-book' dangerouslySetInnerHTML={{__html: this.state.content}} />
+         <Paper className='sing-book'>
+            <div dangerouslySetInnerHTML={{__html: this.state.content}} />
+         </Paper>
       );
    }
 

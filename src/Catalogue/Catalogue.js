@@ -4,6 +4,7 @@ import {
 import {List, ListItem} from 'material-ui/List';
 import Folder from 'material-ui/svg-icons/file/folder';
 import Book from 'material-ui/svg-icons/action/book';
+import Paper from 'material-ui/Paper';
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './catalogue.scss';
@@ -22,11 +23,11 @@ class Catalogue extends Component {
 
    render() {
       return (
-         <div className='catalogue'>
+         <Paper className='catalogue'>
             <List>
                {this.state.catalogue}
             </List>
-         </div>
+         </Paper>
       );
    }
 

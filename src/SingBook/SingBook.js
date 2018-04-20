@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import MarkdownIt from 'markdown-it';
+import {connect} from 'react-redux';
 import './singbook.scss';
 
-export default class SingBook extends Component {
+class SingBook extends Component {
    constructor() {
       super(...arguments);
 
@@ -12,7 +13,21 @@ export default class SingBook extends Component {
    }
 
    componentDidMount() {
-      fetch("./md/README.md")
+      this.getBookContent();
+   }
+
+   componentDidUpdate() {
+      this.getBookContent();
+   }
+
+   render() {
+      return (
+         <div className='sing-book' dangerouslySetInnerHTML={{__html: this.state.content}} />
+      );
+   }
+
+   getBookContent() {
+      fetch(this.props.path)
          .then(res => {
             res.text()
                .then(md => {
@@ -24,10 +39,12 @@ export default class SingBook extends Component {
                });
          });
    }
-
-   render() {
-      return (
-         <div className='sing-book' dangerouslySetInnerHTML={{__html: this.state.content}} />
-      );
-   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+   return {
+      path: state.path
+   };
+}
+
+export default connect(mapStateToProps)(SingBook);

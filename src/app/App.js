@@ -20,7 +20,7 @@ export default class App extends Component {
       // muiTheme={getMuiTheme(darkBaseTheme)} 
       return (
          <Provider store={store}>
-            <MuiThemeProvider >
+            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
                <SingDoc />
             </MuiThemeProvider>
          </Provider>

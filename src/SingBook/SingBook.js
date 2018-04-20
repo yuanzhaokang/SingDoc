@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import MarkdownIt from 'markdown-it';
+import hljs from 'highlight.js';
 import Paper from 'material-ui/Paper';
 import {connect} from 'react-redux';
 import './singbook.scss';
+import 'highlight.js/styles/dark.css';
 
 class SingBook extends Component {
    constructor() {
@@ -34,7 +36,20 @@ class SingBook extends Component {
          .then(res => {
             res.text()
                .then(md => {
-                  let markdown = new MarkdownIt();
+                  let markdown = MarkdownIt({
+                     highlight: function (str, lang) {
+                        if(lang && hljs.getLanguage(lang)) {
+                           try {
+                              return '<pre class="hljs"><code>' +
+                                 hljs.highlight(lang, str, true).value +
+                                 '</code></pre>';
+                           } catch(__) {}
+                        }
+
+                        return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+                     }
+                  });
+
                   let content = markdown.render(md);
                   this.setState({
                      content

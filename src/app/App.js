@@ -1,8 +1,8 @@
 import SingDoc from '../SingDoc';
 import reducers from 'src/reducers/reducers';
 
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+// import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+// import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import React, {Component} from 'react';
 import {createStore} from 'redux';
@@ -17,10 +17,9 @@ export default class App extends Component {
    }
 
    render() {
-      // muiTheme={getMuiTheme(darkBaseTheme)} 
       return (
          <Provider store={store}>
-            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+            <MuiThemeProvider>
                <SingDoc />
             </MuiThemeProvider>
          </Provider>

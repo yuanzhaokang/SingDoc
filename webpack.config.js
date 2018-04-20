@@ -6,7 +6,7 @@ module.exports = {
    devtool: false,
    entry: {
       bundle: './src/app/render.js',
-      // vendor: ['react', 'react-dom', 'core-decorators', 'markdown-it', 'react-redux', 'redux']
+      extend: './src/util/extend.js'
    },
    output: {
       path: __dirname,

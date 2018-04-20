@@ -1,11 +1,14 @@
+import {
+   UPDATE_BOOK
+} from 'src/actions/actions';
 import {List, ListItem} from 'material-ui/List';
-// import FontIcon from 'material-ui/FontIcon';
 import Folder from 'material-ui/svg-icons/file/folder';
 import Book from 'material-ui/svg-icons/action/book';
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import './catalogue.scss';
 
-export default class Catalogue extends Component {
+class Catalogue extends Component {
    constructor() {
       super(...arguments);
       this.state = {
@@ -66,10 +69,15 @@ export default class Catalogue extends Component {
    }
 
    handleItemClick(path) {
-      console.log(path);
+      this.props.dispatch({
+         path: path,
+         type: UPDATE_BOOK
+      });
    }
 
    isFolder(item) {
       return !!item.children;
    }
 }
+
+export default connect()(Catalogue);
